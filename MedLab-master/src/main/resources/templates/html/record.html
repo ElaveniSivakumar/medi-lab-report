@@ -1,0 +1,246 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 50%;
+        
+      }
+      header {
+        background-color: aliceblue;
+        text-align: center;
+        padding: 5px;
+      }
+      .details {
+        display: flex;
+        justify-content: space-between;
+      }
+      table {
+        width: 100%;
+        table-layout: fixed;
+        text-align: left;
+      }
+      th,
+      td {
+        padding: 5px;
+      }
+      p {
+        margin: 10px 0;
+      }
+      footer {
+        text-align: center;
+        padding: 3px;
+        background-color: aliceblue;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div th:each="record : ${labInfo}">
+        <h2 th:text="${record.labName}" > </h2>
+        </div>
+      </header>
+      <hr />
+      <div class="details">
+        <div th:each="record : ${patientDetails}">
+          <p><strong>Patient Name:</strong> <span th:text="${record.patientName}"></span></p>
+        <p><strong>Patient Code:</strong> <span th:text="${record.patientCode}"></span></p>
+        <p><strong>Age:</strong> <span th:text="${record.age}"></span></p>
+        <p><strong>Gender:</strong> <span th:text="${record.gender}"></span></p>
+        </div>
+        <div th:each="record : ${patientDetails}">
+          <h3>Sample Collected At:</h3>
+          <p>125,shivam Bungalow,s g road,mumbai</p>
+          <p>Ref. by&nbsp;:&nbsp;<b><span th:text="${record.referredBy}"></span></b></p>
+        </div>
+        <div style="margin-top: 10px;" th:each="record : ${patientDetails}">
+          <p><b>Registered on:</b> <span th:text="${record.dateAndTime}"></span></p>
+          <p><b>Collected on:</b> <span th:text="${record.issueDate}"></span></p>
+          <p><b>Reported on:</b> <span th:text="${record.issueDate}"></span></p>
+        </div>
+      </div>
+      <hr />
+    <div th:each="record : ${patientDetails}" >
+      <h3 style="text-align: center; margin: 10px 0" > <span th:text="${record.testName}" ></span> </h3>
+      </div>
+      <hr />
+      <div>
+        <table>
+          <tr>
+            <th>Investigation</th>
+            <th>Result</th>
+            <th>Unit</th>
+            <th>Reference Value</th>
+          </tr>
+          <tr th:each="record : ${result}">
+            <td th:text="${record.variablesName}"> </td>
+            <td th:text="${record.results}"></td>
+            <td th:text="${record.units}"></td>
+            <td th:text="${record.referenceValue}"></td>
+          </tr> 
+        </table>
+        <div th:each="record : ${patientDetails}">
+        <p> <span th:text="${record.clinicalNotes}"></span></p>
+        </div>
+        <footer>
+          <p>
+            <b>Ebrain Medilab-POS Record</b><br />
+            "Precision in experimentation yields clarity in results."<br />
+            Thanjavur | Tamil Nadu - 613005 |
+            <a href="tel:9080535138">9080535138</a>|
+            <a href="mailto:ebrainmedilab@example.com"
+              >mailto:ebrainmedilab@gmail.com</a
+            >
+          </p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .container {
+      width: 100%;
+    }
+    header {
+      margin-left : 0px;
+
+    }
+
+    .contact{
+      float:right;
+      margin-top:-70px;
+    }
+    .details {
+      display: flex;
+      justify-content: space-between;
+    }
+    table {
+      width: 100%;
+      table-layout: fixed;
+      text-align: left;
+    }
+    th,
+    td {
+      padding: 5px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 3px;
+      background-color: aliceblue;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .signature {
+        float: right;
+        margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header th:each="record : ${labInfo}" >
+<!--        <img th:src="${record.labLogo}" alt="logo" style="float:left; width: 100px; height: 50px;"> </img>-->
+    <img src="">
+    <h2 style="margin:0px;" th:text="${record.labName}" > </h2>
+    <h4 style="margin:0px;" th:text="${record.labMoto}" > </h4>
+    <h5 style="margin:0px;" th:text="${record.labAddress}" ></h5>
+  </header>
+  <div class="contact" th:each="record : ${labInfo}">
+    <strong>Phone no: <span th:text="${record.labPhone}"></span> </strong> <br/>
+    <strong>Email: <span th:text="${record.labEmail}"></span> </strong>
+  </div>
+  <div style="background-color: blue" th:each="record : ${labInfo}" ><p style="text-align: right;color:white" th:text="${record.labWebsite}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+  <table>
+    <tr>
+      <td th:each="record : ${patientDetails}">
+        <p>
+          <strong>Patient Name:</strong>
+          <span th:text="${record.patientName}"></span>
+        </p>
+        <p>
+          <strong>Patient Code:</strong>
+          <span th:text="${record.patientCode}"></span>
+        </p>
+        <p><strong>Age:</strong> <span th:text="${record.age}"></span></p>
+        <p>
+          <strong>Gender:</strong> <span th:text="${record.gender}"></span>
+        </p>
+      </td>
+      <td th:each="record : ${patientDetails}">
+        <h3>Sample Collected At:</h3>
+        <p>125,shivam Bungalow,s g road,mumbai</p>
+        <p>
+          Ref. by&nbsp;:&nbsp;<b
+        ><span th:text="${record.referredBy}"></span
+        ></b>
+        </p>
+      </td>
+      <td style="margin-top: 10px" th:each="record : ${patientDetails}">
+        <p>
+          <b>Registered on:</b> <span th:text="${record.dateAndTime}"></span>
+        </p>
+        <p>
+          <b>Collected on:</b> <span th:text="${record.issueDate}"></span>
+        </p>
+        <p><b>Reported on:</b> <span th:text="${record.issueDate}"></span></p>
+      </td>
+    </tr>
+  </table>
+  <hr />
+  <div th:each="record : ${patientDetails}">
+    <h3 style="text-align: center; margin: 10px 0">
+      <span th:text="${record.testName}"></span>
+    </h3>
+  </div>
+  <hr />
+  <div>
+    <table>
+      <tr>
+        <th>Investigation</th>
+        <th>Result</th>
+        <th>Unit</th>
+        <th>Reference Value</th>
+      </tr>
+      <tr th:each="record : ${result}">
+        <td th:text="${record.variablesName}"></td>
+        <td th:text="${record.results}"></td>
+        <td th:text="${record.units}"></td>
+        <td th:text="${record.referenceValue}"></td>
+      </tr>
+    </table>
+    <div th:each="record : ${patientDetails}">
+      <div style="margin-top:20px;">
+        <strong>Note:</strong>
+      </div>
+      <p><span th:text="${record.clinicalNotes}"></span></p>
+    </div>
+    <hr/>
+    <p style="text-align: center;">*************END OF REPORT*************</p>
+
+      <div class="signature" style="margin-top:30px;">
+        <strong>Signature</strong>
+      </div>
+  </div>
+</div>
+<footer>
+    <div style="background-color: blue" ><p style="text-align: right;color:white" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+</footer>
+</body>
+</html>
